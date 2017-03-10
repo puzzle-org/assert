@@ -2,10 +2,11 @@
 # PHPUnit
 #------------------------------------------------------------------------------
 CONTAINER_NAME=puzzle/assert/phpunit
+CONTAINER_SOURCE_PATH=/usr/src/puzzle-assert
 
 phpunit = docker run -it --rm --name phpunit \
-	                 -v ${PUZZLE_ASSERT_DIR}:/usr/src/puzzle-assert \
-	                 -w /usr/src/puzzle-assert \
+	                 -v ${HOST_SOURCE_PATH}:${CONTAINER_SOURCE_PATH} \
+	                 -w ${CONTAINER_SOURCE_PATH} \
 	                 -u ${USER_ID}:${GROUP_ID} \
 	                 ${CONTAINER_NAME} \
 	                 vendor/bin/phpunit $1 $(CLI_ARGS)
