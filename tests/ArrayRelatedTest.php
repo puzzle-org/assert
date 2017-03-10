@@ -5,7 +5,7 @@ namespace Puzzle\Assert;
 class ArrayRelatedTest extends \PHPUnit_Framework_TestCase
 {
     use ArrayRelated;
-    
+
     /**
      * @dataProvider providerTestSuccessAssertSameArrayExceptOrder
      */
@@ -13,14 +13,14 @@ class ArrayRelatedTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertSameArrayExceptOrder([0, '2', 'trois', 4], $array);
     }
-    
+
     public function providerTestSuccessAssertSameArrayExceptOrder()
     {
         return [
             'exactly same' => [[0, '2', 'trois', 4]],
         ];
     }
-    
+
     /**
      * @dataProvider providerTestFailAssertSameArrayExceptOrder
      * @expectedException \PHPUnit_Framework_ExpectationFailedException
@@ -29,7 +29,7 @@ class ArrayRelatedTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertSameArrayExceptOrder([0, '2', 'trois', 4, 4, 4], $array);
     }
-    
+
     public function providerTestFailAssertSameArrayExceptOrder()
     {
         return [
@@ -45,7 +45,7 @@ class ArrayRelatedTest extends \PHPUnit_Framework_TestCase
             'cast' => [[false, '2', 'trois', '4', '4', 4.0]],
         ];
     }
-    
+
     /**
      * @dataProvider providerTestSuccessAssertSameKeysAndValuesExceptOrder
      */
@@ -60,7 +60,7 @@ class ArrayRelatedTest extends \PHPUnit_Framework_TestCase
            'beef' => 51,
        ], $array);
     }
-    
+
     public function providerTestSuccessAssertSameKeysAndValuesExceptOrder()
     {
         return [
@@ -82,7 +82,7 @@ class ArrayRelatedTest extends \PHPUnit_Framework_TestCase
             ]],
         ];
     }
-    
+
     /**
      * @dataProvider providerTestFailAssertSameKeysAndValuesExceptOrder
      * @expectedException \PHPUnit_Framework_ExpectationFailedException
@@ -98,7 +98,7 @@ class ArrayRelatedTest extends \PHPUnit_Framework_TestCase
            'beef' => 51,
        ], $array);
     }
-    
+
     public function providerTestFailAssertSameKeysAndValuesExceptOrder()
     {
         return [
@@ -128,5 +128,30 @@ class ArrayRelatedTest extends \PHPUnit_Framework_TestCase
                 'EXTRA' => 42,
             ]],
         ];
+    }
+
+    /**
+     * @expectedException \PHPUnit_Framework_ExpectationFailedException
+     */
+    public function testMultiDimArrays()
+    {
+        $obj = new \stdClass();
+
+        $this->assertSameArrayExceptOrder(
+            [
+                '2',
+                3,
+                [1 , 2, 3],
+                false,
+                $obj,
+            ],
+            [
+                $obj,
+                [3, 2, 1],
+                3,
+                false,
+                '2',
+            ]
+        );
     }
 }
