@@ -13,7 +13,7 @@ Service | Result
 **Travis CI** (PHP 5.6 .. 7.1) | [![Build Status](https://travis-ci.org/puzzle-org/assert.svg?branch=master)](https://travis-ci.org/puzzle-org/assert)
 **Scrutinizer** | [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/puzzle-org/assert/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/puzzle-org/assert/?branch=master)
 **Code coverage** | [![codecov](https://codecov.io/gh/puzzle-org/assert/branch/master/graph/badge.svg)](https://codecov.io/gh/puzzle-org/assert)
-**Packagist** | [![Latest Stable Version](https://poser.pugx.org/puzzle/amqp/v/stable.png)](https://packagist.org/packages/puzzle/assert) [![Total Downloads](https://poser.pugx.org/puzzle/assert/downloads.svg)](https://packagist.org/packages/puzzle/assert)
+**Packagist** | [![Latest Stable Version](https://poser.pugx.org/puzzle/assert/v/stable.png)](https://packagist.org/packages/puzzle/assert) [![Total Downloads](https://poser.pugx.org/puzzle/assert/downloads.svg)](https://packagist.org/packages/puzzle/assert)
 
 
 Example
