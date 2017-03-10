@@ -2,6 +2,7 @@
     "name": "puzzle/assert",
     "description": "Assert for PHP Unit",
     "type": "library",
+    "license": "MIT",
     "authors": [{
             "name": "Nicolas Le Nardou",
             "email": "nico.ln@gmail.com"
