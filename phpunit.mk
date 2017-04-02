@@ -9,10 +9,13 @@ phpunit = docker run -it --rm --name phpunit \
 	                 -w ${CONTAINER_SOURCE_PATH} \
 	                 -u ${USER_ID}:${GROUP_ID} \
 	                 ${IMAGE_NAME} \
-	                 vendor/bin/phpunit $1 $(CLI_ARGS)chore: fix variable name in phpunit makefile
+	                 vendor/bin/phpunit $1 $(CLI_ARGS)
 
 phpunit: vendor/bin/phpunit create-phpunit-image
 	$(call phpunit, )
+
+phpunit-dox: vendor/bin/phpunit create-phpunit-image
+	$(call phpunit, --testdox)
 
 phpunit-coverage: vendor/bin/phpunit create-phpunit-image
 	$(call phpunit, --coverage-html=coverage/)
