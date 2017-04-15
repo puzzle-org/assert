@@ -23,4 +23,3 @@ clean:
 	rm -rf vendor
 
 .PHONY: composer composer-install clean
-	
