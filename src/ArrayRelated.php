@@ -27,4 +27,12 @@ trait ArrayRelated
             $this->assertSame($value, $array[$key], $message);
         }
     }
+
+    private function assertHasKeys(array $expectedKeys, array $array, $message = '')
+    {
+        foreach($expectedKeys as $key)
+        {
+            $this->assertArrayHasKey($key, $array, $message);
+        }
+    }
 }

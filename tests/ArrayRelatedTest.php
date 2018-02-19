@@ -154,4 +154,84 @@ class ArrayRelatedTest extends \PHPUnit_Framework_TestCase
             ]
         );
     }
+
+    /**
+     * @dataProvider providerTestSuccessHasKeys
+     */
+    public function testSuccessHasKeys(array $keys)
+    {
+        $array = array_fill_keys(['a', 'b', 'c', 'd'], 0);
+
+        $this->assertHasKeys($keys, $array);
+    }
+
+    public function providerTestSuccessHasKeys()
+    {
+        return [
+            [['a']],
+            [['b']],
+            [['c']],
+            [['d']],
+            [['b','a',]],
+            [['c','a',]],
+            [['d','a',]],
+            [['a','b',]],
+            [['c','b',]],
+            [['d','b',]],
+            [['a','c',]],
+            [['b','c',]],
+            [['d','c',]],
+            [['a','d',]],
+            [['b','d',]],
+            [['c','d',]],
+            [['a','b','c']],
+            [['a','b','d']],
+            [['a','c','b']],
+            [['a','c','d']],
+            [['a','d','b']],
+            [['a','d','c']],
+            [['b','a','c']],
+            [['b','a','d']],
+            [['b','c','a']],
+            [['b','c','d']],
+            [['b','d','a']],
+            [['b','d','c']],
+            [['c','a','b']],
+            [['c','a','d']],
+            [['c','b','a']],
+            [['c','b','d']],
+            [['c','d','a']],
+            [['c','d','b']],
+            [['d','a','b']],
+            [['d','a','c']],
+            [['d','b','a']],
+            [['d','b','c']],
+            [['d','c','a']],
+            [['d','c','b']],
+        ];
+    }
+
+    /**
+     * @dataProvider providerTestFailHasKeys
+     * @expectedException \PHPUnit_Framework_ExpectationFailedException
+     */
+    public function testFailHasKeys(array $keys)
+    {
+        $array = array_fill_keys(['a', 'b', 'c', 'd'], 0);
+
+        $this->assertHasKeys($keys, $array);
+    }
+
+    public function providerTestFailHasKeys()
+    {
+        return [
+            [['e']],
+            [['f']],
+            [['a', 'e']],
+            [['d', 'f']],
+            [['d', 'z', 'a']],
+            [['y', 'a', 'c']],
+            [['r', 't', 'b', 'f']],
+        ];
+    }
 }
